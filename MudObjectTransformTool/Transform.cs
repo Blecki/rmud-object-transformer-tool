@@ -26,7 +26,10 @@ namespace MudObjectTransformTool
 
         public int Generate(string wszInputFilePath, string bstrInputFileContents, string wszDefaultNamespace, IntPtr[] rgbOutputFileContents, out uint pcbOutput, IVsGeneratorProgress pGenerateProgress)
         {
-            var bytes = Encoding.UTF8.GetBytes(bstrInputFileContents);
+            Pattern.DiscoverPatterns();
+            var result = Pattern.ProcessFile(bstrInputFileContents);
+
+            var bytes = Encoding.UTF8.GetBytes(result);
             rgbOutputFileContents[0] = Marshal.AllocCoTaskMem(bytes.Length);
             Marshal.Copy(bytes, 0, rgbOutputFileContents[0], bytes.Length);
             pcbOutput = (uint)bytes.Length;

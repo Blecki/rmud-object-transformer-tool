@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudObjectTransformTool", "MudObjectTransformTool\MudObjectTransformTool.csproj", "{E5D49DA9-B6CB-4546-90B0-C8F701E048F7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gacfucker", "gacfucker\gacfucker.csproj", "{CC001CE9-B00D-436F-B99A-B3AD7B3CAF6D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformationDebug", "TransformationDebug\TransformationDebug.csproj", "{8134C33A-2F8C-440F-855F-0286B5233E55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformationTest", "TransformationTest\TransformationTest.csproj", "{14C5790D-AA3B-4946-AC03-1F53516B8711}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E5D49DA9-B6CB-4546-90B0-C8F701E048F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5D49DA9-B6CB-4546-90B0-C8F701E048F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5D49DA9-B6CB-4546-90B0-C8F701E048F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5D49DA9-B6CB-4546-90B0-C8F701E048F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC001CE9-B00D-436F-B99A-B3AD7B3CAF6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC001CE9-B00D-436F-B99A-B3AD7B3CAF6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC001CE9-B00D-436F-B99A-B3AD7B3CAF6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC001CE9-B00D-436F-B99A-B3AD7B3CAF6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8134C33A-2F8C-440F-855F-0286B5233E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8134C33A-2F8C-440F-855F-0286B5233E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8134C33A-2F8C-440F-855F-0286B5233E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8134C33A-2F8C-440F-855F-0286B5233E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C5790D-AA3B-4946-AC03-1F53516B8711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C5790D-AA3B-4946-AC03-1F53516B8711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C5790D-AA3B-4946-AC03-1F53516B8711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C5790D-AA3B-4946-AC03-1F53516B8711}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
