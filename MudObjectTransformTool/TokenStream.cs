@@ -15,6 +15,7 @@ namespace MudObjectTransformTool
             while (current.Type != TokenType.EndOfFile)
             {
                 current.Next = ParseToken(iterator);
+                current.Next.Previous = current;
                 current = current.Next;
             }
             return first;
@@ -66,7 +67,7 @@ namespace MudObjectTransformTool
             else
             {
                 var token = "";
-                while (!Source.AtEnd && !"[](){} \t\r\n\"".Contains((char)Source.Next))
+                while (!Source.AtEnd && !"[](){}; \t\r\n\"".Contains((char)Source.Next))
                 {
                     token += (char)Source.Next;
                     Source.Advance();

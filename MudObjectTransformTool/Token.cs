@@ -16,6 +16,7 @@ namespace MudObjectTransformTool
         CloseBrace,
         SemiColon,
         Whitespace,
+        GeneratedBlock,
         Comment,
 
         EndOfFile,
@@ -25,6 +26,7 @@ namespace MudObjectTransformTool
     {
         public TokenType Type;
         public String Value;
+        public Token Previous;
         public Token Next;
 
         public static Token Create(TokenType Type, String Value)

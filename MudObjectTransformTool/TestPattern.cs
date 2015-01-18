@@ -10,7 +10,7 @@ namespace MudObjectTransformTool
     {
         public override MatchResult Match(Token Start)
         {
-            if (Matches(MSequence(MToken("@@int"), MWhitespace(), MToken("test;")), Start))
+            if (Matches(MSequence(MToken("@@int"), MWhitespace(), MToken("test")), Start))
             {
                 Start.Value = "float";
                 return MatchResult.Create(Advance(Start, 3));
