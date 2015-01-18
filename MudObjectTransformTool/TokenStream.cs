@@ -55,6 +55,7 @@ namespace MudObjectTransformTool
 			else if (Source.Next == ']') { Source.Advance(); return Token.Create(TokenType.CloseBracket, "]"); }
 			else if (Source.Next == '{') { Source.Advance(); return Token.Create(TokenType.OpenBrace, "{"); }
 			else if (Source.Next == '}') { Source.Advance(); return Token.Create(TokenType.CloseBrace, "}"); }
+            else if (Source.Next == ';') { Source.Advance(); return Token.Create(TokenType.SemiColon, ";"); }
 			else if (Source.Next == '\"')
             {
                 Source.Advance();

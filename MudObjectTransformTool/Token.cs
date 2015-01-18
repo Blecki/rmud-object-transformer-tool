@@ -14,6 +14,7 @@ namespace MudObjectTransformTool
         CloseBracket,
         OpenBrace,
         CloseBrace,
+        SemiColon,
         Whitespace,
         Comment,
 
