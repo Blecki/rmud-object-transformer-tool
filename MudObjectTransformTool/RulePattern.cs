@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MudObjectTransformTool
 {
+    public class RuleClauseTag { }
+
     public class RulePattern : Pattern
     {
         private Dictionary<String, List<Tuple<String, String>>> StandardRuleArguments;
@@ -145,6 +147,8 @@ namespace MudObjectTransformTool
 
                         var rest = before.Next;
                         before.Next = Advance(clause.Item1, 1);
+                        before.Next.Previous = before;
+                        before.Next.Tag = new RuleClauseTag();
                         var lastTokenInBody = (clause.Item2 == null ? null : clause.Item2.Previous);
                         if (lastTokenInBody != null) lastTokenInBody.Next = rest;
                         if (rest != null) rest.Previous = lastTokenInBody;
@@ -156,7 +160,9 @@ namespace MudObjectTransformTool
                         before = InsertAfter(before, Token.Create(TokenType.GeneratedBlock, "\n.Do((" + String.Join(", ", arguments.Select(t => t.Item2)) + ") => "));
 
                         var rest = before.Next;
-                        before.Next = Advance(clause.Item1, 1);
+                        before.Next = AdvanceAndSkipWhitespace(clause.Item1, 1);
+                        before.Next.Previous = before;
+                        before.Next.Tag = new RuleClauseTag();
                         var lastTokenInBody = (clause.Item2 == null ? null : clause.Item2.Previous);
                         if (lastTokenInBody != null) lastTokenInBody.Next = rest;
                         if (rest != null) rest.Previous = lastTokenInBody;

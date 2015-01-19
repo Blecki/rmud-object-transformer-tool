@@ -19,7 +19,7 @@ namespace TransformationDebug
         static void Main(string[] args)
         {
             MudObjectTransformTool.Pattern.DiscoverPatterns();
-            RunTest(@"
+            RunTest(/*@"
 Global first perform dance (Actor actor) 
     when actor is Player 
     do { 
@@ -33,7 +33,7 @@ Check can put? (Actor actor) (MudObject item) (MudObject container) (RelativeLoc
         SendMessage(actor, ""Wait stop, you're lactose intolerant!"");
         Disallow;
     };
-
+*/@"
 Perform test rule 
     do continue;");
             

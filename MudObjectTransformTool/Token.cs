@@ -28,10 +28,11 @@ namespace MudObjectTransformTool
         public String Value;
         public Token Previous;
         public Token Next;
+        public Object Tag;
 
-        public static Token Create(TokenType Type, String Value)
+        public static Token Create(TokenType Type, String Value, Object Tag = null)
         {
-            return new Token{ Type = Type, Value = Value };
+            return new Token{ Type = Type, Value = Value, Tag = Tag };
         }
 
         public override string ToString()

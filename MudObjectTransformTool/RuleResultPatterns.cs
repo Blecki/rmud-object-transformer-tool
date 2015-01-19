@@ -45,6 +45,9 @@ namespace MudObjectTransformTool
         {
             if (Matches(MSequence(MToken("continue"), MSemicolon()), Start))
                 return MatchResult.Create(Replace(Start, Advance(Start, 2), Token.Create(TokenType.GeneratedBlock, "return PerformResult.Continue;")));
+            else if (Matches(MToken("continue"), Start) && Start.Tag is RuleClauseTag)
+                return MatchResult.Create(Replace(Start, Advance(Start, 1), Token.Create(TokenType.GeneratedBlock, "PerformResult.Continue")));
+                
 
             return MatchResult.NoMatch;
         }

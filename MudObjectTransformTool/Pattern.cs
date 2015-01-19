@@ -27,7 +27,7 @@ namespace MudObjectTransformTool
         public static Token Advance(Token Start, int Count)
         {
             for (int i = 0; i < Count; ++i)
-                if (Start.Type != TokenType.EndOfFile) Start = Start.Next;
+                if (Start != null) Start = Start.Next;
             return Start;
         }
 
