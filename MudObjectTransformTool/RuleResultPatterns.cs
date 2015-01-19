@@ -22,7 +22,7 @@ namespace MudObjectTransformTool
         public override MatchResult Match(Token Start)
         {
             if (Matches(MSequence(MToken("disallow"), MSemicolon()), Start))
-                return MatchResult.Create(Replace(Start, Advance(Start, 2), Token.Create(TokenType.GeneratedBlock, "return PerformResult.Disallow;")));
+                return MatchResult.Create(Replace(Start, Advance(Start, 2), Token.Create(TokenType.GeneratedBlock, "return CheckResult.Disallow;")));
 
             return MatchResult.NoMatch;
         }

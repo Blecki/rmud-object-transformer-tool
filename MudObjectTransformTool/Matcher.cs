@@ -20,12 +20,12 @@ namespace MudObjectTransformTool
 
         public TokenMatcher(String ExactString)
         {
-            this.ExactString = ExactString;
+            this.ExactString = ExactString.ToUpper();
         }
 
         public override MatchResult Matches(Token Token)
         {
-            if (Token != null && Token.Value == ExactString) return MatchResult.Create(Token.Next);
+            if (Token != null && Token.Value.ToUpper() == ExactString) return MatchResult.Create(Token.Next);
             else return MatchResult.NoMatch;
         }
     }

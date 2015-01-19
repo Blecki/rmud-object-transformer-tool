@@ -46,8 +46,8 @@
     <Compile Include="CustomToolAttribute.cs" />
     <Compile Include="Matcher.cs" />
     <Compile Include="MatchResult.cs" />
-    <Compile Include="PerformPattern.cs" />
-    <Compile Include="RuleResults.cs" />
+    <Compile Include="RulePattern.cs" />
+    <Compile Include="RuleResultPatterns.cs" />
     <Compile Include="TestPattern.cs" />
     <Compile Include="Pattern.cs" />
     <Compile Include="StringIterator.cs" />
