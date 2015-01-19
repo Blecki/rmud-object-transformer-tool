@@ -37,6 +37,15 @@ namespace MudObjectTransformTool
             else StandardRuleArguments.Add(RuleName, list);
         }
 
+        public static void DumpStandardRuleArgumentTypes(String Filename)
+        {
+            using (var writer = new System.IO.StreamWriter(Filename))
+            {
+                foreach (var entry in StandardRuleArguments)
+                    writer.WriteLine("MudObjectTransformTool.RulePattern.AddStandardRuleArgumentTypes(\"" + entry.Key + "\"" + (entry.Value.Count != 0 ? ", " : "") + String.Join(", ", entry.Value.Select(v => "\"" + v.Item1 + " " + v.Item2 + "\"")) + ");");
+            }
+        }
+
         public override MatchResult Match(Token Start)
         {
             //Reject obvious mismatches early.

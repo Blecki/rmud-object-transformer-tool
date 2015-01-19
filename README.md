@@ -22,7 +22,7 @@ After installation, Visual Studio will automatically attach this tool to any fil
 
 This project is also a good example of how to get a custom tool working with Visual Studio Community Edition. It's tough. Go ahead and google for 'visual studio compile time file transformation'. Did you find any results that weren't about t4 text templates? I didn't either! t4 templates are fantastic, but they can't do what I wanted to accomplish with this. 
 
-Lots of googling later eventually lead me to www.codeproject.com/Articles/31257/Custom-Tools-Explained . Most of the integration with visual studio is taken directly from that article. There are, however, a few noteworthy issues I had to deal with to get it to actually work, and my solutions might be helpful for someone else.
+Lots of googling later eventually lead me to www.codeproject.com/Articles/31257/Custom-Tools-Explained. Most of the integration with visual studio is taken directly from that article. There are, however, a few noteworthy issues I had to deal with to get it to actually work, and my solutions might be helpful for someone else.
 	A) To get the Interop assemblies, so you can reference them, you need to install the visual studio SDK.
 
 	B) To register your custom tool for COM, which Visual Studio will do for you, you first need to register the Interop dll for com, which Visual Studio will not do for you. Google for the text of the error message Visual Studio gives you the first time you try to build. Lots of other people have had this problem.
