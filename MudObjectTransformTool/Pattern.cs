@@ -73,7 +73,16 @@ namespace MudObjectTransformTool
             return OnePastEnd;
         }
 
-        private static List<Pattern> Patterns;
+        public static IEnumerable<Token> EnumerateTokens(Token Start, Token End)
+        {
+            while (Start != End)
+            {
+                yield return Start;
+                Start = Start.Next;
+            }
+        }
+
+        private static List<Pattern> Patterns = null;
 
         public static void DiscoverPatterns()
         {
@@ -85,6 +94,8 @@ namespace MudObjectTransformTool
 
         public static String ProcessFile(String Data)
         {
+            if (Patterns == null) DiscoverPatterns();
+
             var rootToken = TokenStream.TokenizeFile(Data);
             var current = rootToken;
             

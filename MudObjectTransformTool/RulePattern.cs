@@ -6,19 +6,23 @@ using System.Threading.Tasks;
 
 namespace MudObjectTransformTool
 {
-    public class RuleClauseTag { }
+    public class RuleBodyClauseTag { }
+    public class RuleBodyClauseHeadTag { }
 
     public class RulePattern : Pattern
     {
-        private Dictionary<String, List<Tuple<String, String>>> StandardRuleArguments;
+        private static Dictionary<String, List<Tuple<String, String>>> StandardRuleArguments = null;
 
         public RulePattern()
         {
-            StandardRuleArguments = new Dictionary<string, List<Tuple<string, string>>>();
-            AddStandardRuleArgumentTypes("test rule", "Actor actor", "MudObject item", "MudObject container");
+            if (StandardRuleArguments == null)
+            {
+                StandardRuleArguments = new Dictionary<string, List<Tuple<string, string>>>();
+                AddStandardRuleArgumentTypes("test rule", "Actor actor", "MudObject item", "MudObject container");
+            }
         }
 
-        private void AddStandardRuleArgumentTypes(String RuleName, params String[] TypeNamePairs)
+        public static void AddStandardRuleArgumentTypes(String RuleName, params String[] TypeNamePairs)
         {
             var list = new List<Tuple<String, String>>(TypeNamePairs.Select(p =>
                 {
@@ -141,32 +145,26 @@ namespace MudObjectTransformTool
                 //Emit clauses.
                 foreach (var clause in clauseList)
                 {
-                    if (clause.Item1.Value.ToUpper() == "WHEN")
+                    if (clause.Item1.Value.ToUpper() == "WHEN" || clause.Item1.Value.ToUpper() == "DO")
                     {
-                        before = InsertAfter(before, Token.Create(TokenType.GeneratedBlock, "\n.When((" + String.Join(", ", arguments.Select(t => t.Item2)) + ") => "));
+                        if (clause.Item1.Value.ToUpper() == "WHEN")
+                            before = InsertAfter(before, Token.Create(TokenType.GeneratedBlock, "\n.When((" + String.Join(", ", arguments.Select(t => t.Item2)) + ") => "));
+                        else
+                            before = InsertAfter(before, Token.Create(TokenType.GeneratedBlock, "\n.Do((" + String.Join(", ", arguments.Select(t => t.Item2)) + ") => "));
+
 
                         var rest = before.Next;
-                        before.Next = Advance(clause.Item1, 1);
-                        before.Next.Previous = before;
-                        before.Next.Tag = new RuleClauseTag();
-                        var lastTokenInBody = (clause.Item2 == null ? null : clause.Item2.Previous);
-                        if (lastTokenInBody != null) lastTokenInBody.Next = rest;
-                        if (rest != null) rest.Previous = lastTokenInBody;
 
-                        before = InsertAfter(lastTokenInBody, Token.Create(TokenType.GeneratedBlock, ")"));
-                    }
-                    else if (clause.Item1.Value.ToUpper() == "DO")
-                    {
-                        before = InsertAfter(before, Token.Create(TokenType.GeneratedBlock, "\n.Do((" + String.Join(", ", arguments.Select(t => t.Item2)) + ") => "));
-
-                        var rest = before.Next;
                         before.Next = AdvanceAndSkipWhitespace(clause.Item1, 1);
                         before.Next.Previous = before;
-                        before.Next.Tag = new RuleClauseTag();
-                        var lastTokenInBody = (clause.Item2 == null ? null : clause.Item2.Previous);
-                        if (lastTokenInBody != null) lastTokenInBody.Next = rest;
-                        if (rest != null) rest.Previous = lastTokenInBody;
+                        var lastTokenInBody = clause.Item2.Previous;
+                        lastTokenInBody.Next = rest;
+                        rest.Previous = lastTokenInBody;
 
+                        foreach (var token in EnumerateTokens(before, rest))
+                            token.Tag = new RuleBodyClauseTag();
+
+                        before.Next.Tag = new RuleBodyClauseHeadTag();
                         before = InsertAfter(lastTokenInBody, Token.Create(TokenType.GeneratedBlock, ")"));
                     }
                     else if (clause.Item1.Value.ToUpper() == "FIRST")
