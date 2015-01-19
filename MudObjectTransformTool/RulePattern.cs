@@ -19,6 +19,7 @@ namespace MudObjectTransformTool
             {
                 StandardRuleArguments = new Dictionary<string, List<Tuple<string, string>>>();
                 AddStandardRuleArgumentTypes("test rule", "Actor actor", "MudObject item", "MudObject container");
+                AddStandardRuleArgumentTypes("test value", "Actor actor", "bool value");
             }
         }
 
@@ -91,16 +92,28 @@ namespace MudObjectTransformTool
                     Start = AdvanceAndSkipWhitespace(Start, 1);
                 }
 
+                bool usingStandardArguments = false;
                 if (StandardRuleArguments.ContainsKey(ruleName) && arguments.Count == 0)
+                {
                     arguments = StandardRuleArguments[ruleName];
+                    usingStandardArguments = true;
+                }
 
                 //For value rules only, a result type must appear immediately after the last argument.
                 var resultType = "";
                 if (ruleType == "VALUE")
                 {
-                    if (Start.Type != TokenType.Token) return MatchResult.NoMatch;
-                    resultType = Start.Value;
-                    Start = AdvanceAndSkipWhitespace(Start, 1);
+                    if (usingStandardArguments)
+                    {
+                        resultType = arguments[arguments.Count - 1].Item1;
+                        arguments = new List<Tuple<string, string>>(arguments.Take(arguments.Count - 1));
+                    }
+                    else
+                    {
+                        if (Start.Type != TokenType.Token) return MatchResult.NoMatch;
+                        resultType = Start.Value;
+                        Start = AdvanceAndSkipWhitespace(Start, 1);
+                    }
                 }
 
                 //Detect when and do clauses. They can appear in any order.

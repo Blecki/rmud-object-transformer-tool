@@ -35,7 +35,10 @@ Check can put? (Actor actor) (MudObject item) (MudObject container) (RelativeLoc
 stop;
 
 Perform test rule 
-    do continue;");
+    do continue;
+
+Value test value
+    do true;");
             
             Console.ReadKey();
         }
