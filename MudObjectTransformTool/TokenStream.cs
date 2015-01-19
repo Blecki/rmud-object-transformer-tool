@@ -79,21 +79,18 @@ namespace MudObjectTransformTool
 		private static String TokenizeStringLiteral(StringIterator Source)
 		{
 			var literal = "";
-			while (!Source.AtEnd && Source.Next != '\"')
-			{
-				if (Source.Next == '\\')
-				{
+            while (!Source.AtEnd && Source.Next != '\"')
+            {
+                if (Source.Next == '\\')
+                {
                     literal += "\\";
-					Source.Advance();
-                    if (Source.AtEnd) return literal;
-                    literal += (char)Source.Next;
-				}
-				else
-				{
-                    literal += (char)Source.Next;
                     Source.Advance();
-				}
-			}
+                    if (Source.AtEnd) return literal;
+                }
+                
+                literal += (char)Source.Next;
+                Source.Advance();
+            }
 			return literal;
 		}
 	}

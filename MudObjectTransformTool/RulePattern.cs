@@ -31,6 +31,8 @@ namespace MudObjectTransformTool
                     if (parts.Length != 2) throw new InvalidOperationException();
                     return Tuple.Create(parts[0], parts[1]);
                 }));
+            if (StandardRuleArguments == null)
+                StandardRuleArguments = new Dictionary<string, List<Tuple<string, string>>>();
             if (StandardRuleArguments.ContainsKey(RuleName)) StandardRuleArguments[RuleName] = list;
             else StandardRuleArguments.Add(RuleName, list);
         }

@@ -38,7 +38,11 @@ Perform test rule
     do continue;
 
 Value test value
-    do true;");
+    do true;
+
+\\disambig"
+                
+);
             
             Console.ReadKey();
         }
