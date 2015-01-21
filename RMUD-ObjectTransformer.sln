@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gacfucker", "gacfucker\gacf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformationDebug", "TransformationDebug\TransformationDebug.csproj", "{8134C33A-2F8C-440F-855F-0286B5233E55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudObjectTransformer", "MudObjectTransformer\MudObjectTransformer.csproj", "{251C7EDD-A717-4C8C-BC3D-01650721C501}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8134C33A-2F8C-440F-855F-0286B5233E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8134C33A-2F8C-440F-855F-0286B5233E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8134C33A-2F8C-440F-855F-0286B5233E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{251C7EDD-A717-4C8C-BC3D-01650721C501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{251C7EDD-A717-4C8C-BC3D-01650721C501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{251C7EDD-A717-4C8C-BC3D-01650721C501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{251C7EDD-A717-4C8C-BC3D-01650721C501}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

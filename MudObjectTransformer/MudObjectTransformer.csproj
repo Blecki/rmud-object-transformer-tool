@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E5D49DA9-B6CB-4546-90B0-C8F701E048F7}</ProjectGuid>
+    <ProjectGuid>{251C7EDD-A717-4C8C-BC3D-01650721C501}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MudObjectTransformerTool</RootNamespace>
-    <AssemblyName>MudObjectTransformTool</AssemblyName>
+    <RootNamespace>MudObjectTransformer</RootNamespace>
+    <AssemblyName>MudObjectTransformer</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RegisterForComInterop>true</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,8 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.Shell.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,25 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomToolAttribute.cs" />
-    <Compile Include="Transform.cs" />
+    <Compile Include="Matcher.cs" />
+    <Compile Include="MatchResult.cs" />
+    <Compile Include="Pattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\gacfucker\gacfucker.csproj">
-      <Project>{cc001ce9-b00d-436f-b99a-b3ad7b3caf6d}</Project>
-      <Name>gacfucker</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MudObjectTransformer\MudObjectTransformer.csproj">
-      <Project>{251c7edd-a717-4c8c-bc3d-01650721c501}</Project>
-      <Name>MudObjectTransformer</Name>
-    </ProjectReference>
+    <Compile Include="RulePattern.cs" />
+    <Compile Include="RuleResultPatterns.cs" />
+    <Compile Include="StringIterator.cs" />
+    <Compile Include="TestPattern.cs" />
+    <Compile Include="Token.cs" />
+    <Compile Include="TokenStream.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>$(TargetDir)gacfucker "$(TargetPath)"
-$(TargetDir)gacfucker "$(TargetDir)MudObjectTransformer.dll"</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

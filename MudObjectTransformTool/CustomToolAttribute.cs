@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MudObjectTransformTool
+namespace MudObjectTransformerTool
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple=false)]
     public class CustomToolAttribute : Attribute

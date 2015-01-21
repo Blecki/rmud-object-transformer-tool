@@ -8,7 +8,7 @@ using Microsoft.VisualStudio;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
 
-namespace MudObjectTransformTool
+namespace MudObjectTransformerTool
 {
     [ComVisible(true)]
     [Guid("6C670E19-A809-4E9C-AA59-EF12A4F3BA7F")]
@@ -26,8 +26,8 @@ namespace MudObjectTransformTool
 
         public int Generate(string wszInputFilePath, string bstrInputFileContents, string wszDefaultNamespace, IntPtr[] rgbOutputFileContents, out uint pcbOutput, IVsGeneratorProgress pGenerateProgress)
         {
-            Pattern.DiscoverPatterns();
-            var result = Pattern.ProcessFile(bstrInputFileContents);
+            MudObjectTransformer.Pattern.DiscoverPatterns();
+            var result = MudObjectTransformer.Pattern.ProcessFile(bstrInputFileContents);
 
             var bytes = Encoding.UTF8.GetBytes(result);
             rgbOutputFileContents[0] = Marshal.AllocCoTaskMem(bytes.Length);

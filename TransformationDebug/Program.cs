@@ -13,7 +13,7 @@ namespace TransformationDebug
             Console.WriteLine("BEFORE:");
             Console.WriteLine(Code);
             Console.WriteLine("AFTER:");
-            Console.WriteLine(MudObjectTransformTool.Pattern.ProcessFile(Code));
+            Console.WriteLine(MudObjectTransformer.Pattern.ProcessFile(Code));
             Console.WriteLine();
         }
         static void Main(string[] args)

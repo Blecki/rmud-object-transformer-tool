@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MudObjectTransformer\MudObjectTransformer.csproj">
+      <Project>{251c7edd-a717-4c8c-bc3d-01650721c501}</Project>
+      <Name>MudObjectTransformer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MudObjectTransformTool\MudObjectTransformTool.csproj">
       <Project>{e5d49da9-b6cb-4546-90b0-c8f701e048f7}</Project>
       <Name>MudObjectTransformTool</Name>
