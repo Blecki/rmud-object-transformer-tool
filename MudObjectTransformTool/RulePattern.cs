@@ -21,6 +21,7 @@ namespace MudObjectTransformTool
                 AddStandardRuleArgumentTypes("test rule", "Actor actor", "MudObject item", "MudObject container");
                 AddStandardRuleArgumentTypes("test value", "Actor actor", "bool value");
 
+                #region Copied Rule Definitions
                 MudObjectTransformTool.RulePattern.AddStandardRuleArgumentTypes("at startup");
                 MudObjectTransformTool.RulePattern.AddStandardRuleArgumentTypes("before command", "PossibleMatch match", "Actor actor");
                 MudObjectTransformTool.RulePattern.AddStandardRuleArgumentTypes("after command", "PossibleMatch match", "Actor actor");
@@ -83,7 +84,7 @@ namespace MudObjectTransformTool
                 MudObjectTransformTool.RulePattern.AddStandardRuleArgumentTypes("describe in locale", "MudObject actor", "MudObject item");
                 MudObjectTransformTool.RulePattern.AddStandardRuleArgumentTypes("describe locale", "MudObject actor", "MudObject room");
                 MudObjectTransformTool.RulePattern.AddStandardRuleArgumentTypes("emits-light", "MudObject item", "LightingLevel value");
-
+                #endregion
             }
         }
 

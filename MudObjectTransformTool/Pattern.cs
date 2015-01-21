@@ -87,9 +87,19 @@ namespace MudObjectTransformTool
         public static void DiscoverPatterns()
         {
             Patterns = new List<Pattern>();
-            foreach (var type in System.Reflection.Assembly.GetExecutingAssembly().GetTypes())
-                if (type.IsSubclassOf(typeof(Pattern)))
-                    Patterns.Add(Activator.CreateInstance(type) as Pattern);
+            try
+            {
+                foreach (var type in System.Reflection.Assembly.GetExecutingAssembly().GetTypes())
+                    if (type.IsSubclassOf(typeof(Pattern)))
+                        Patterns.Add(Activator.CreateInstance(type) as Pattern);
+            } catch (System.Reflection.ReflectionTypeLoadException e)
+            {
+                Console.WriteLine(e.Message);
+                for (int i = 0; i < e.Types.Length; ++i)
+                    Console.WriteLine(
+                        (e.Types[i] == null ? "??" : e.Types[i].Name) + " : " + (e.LoaderExceptions[i] == null ? "Loaded." : e.LoaderExceptions[i].Message));
+                throw;
+            }
         }
 
         public static String ProcessFile(String Data)
