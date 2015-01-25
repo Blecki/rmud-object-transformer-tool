@@ -57,7 +57,8 @@ namespace MudObjectTransformer
 			else if (Source.Next == '{') { Source.Advance(); return Token.Create(TokenType.OpenBrace, "{"); }
 			else if (Source.Next == '}') { Source.Advance(); return Token.Create(TokenType.CloseBrace, "}"); }
             else if (Source.Next == ';') { Source.Advance(); return Token.Create(TokenType.SemiColon, ";"); }
-			else if (Source.Next == '\"')
+            else if (Source.Next == ',') { Source.Advance(); return Token.Create(TokenType.Comma, ","); }
+            else if (Source.Next == '\"')
             {
                 Source.Advance();
                 var literal = TokenizeStringLiteral(Source);
@@ -67,7 +68,7 @@ namespace MudObjectTransformer
             else
             {
                 var token = "";
-                while (!Source.AtEnd && !"[](){}; \t\r\n\"".Contains((char)Source.Next))
+                while (!Source.AtEnd && !"[](){};, \t\r\n\"".Contains((char)Source.Next))
                 {
                     token += (char)Source.Next;
                     Source.Advance();

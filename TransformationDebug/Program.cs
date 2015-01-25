@@ -18,31 +18,16 @@ namespace TransformationDebug
         }
         static void Main(string[] args)
         {
+            MudObjectTransformer.StandardRules.AddRule("test", MudObjectTransformer.RuleBookType.Value, "int foo", "float");
             RunTest(@"
-Global first perform dance (Actor actor) 
-    when actor is Player 
-    do { 
-        SendMessage(actor, ""Dance dance revolution""); 
-        stop; 
-    };
+Consider multi token name with arg1, arg2;
+Consider another rule;
 
-Check can put? (Actor actor) (MudObject item) (MudObject container) (RelativeLocation relloc)
-    when item is CheeseSandwich && container is Mouth
-    do {
-        SendMessage(actor, ""Wait stop, you're lactose intolerant!"");
-        Disallow;
-    };
-stop;
+value test when foo == 3 do 6.0f;
 
-Perform test rule 
-    do continue;
+consider test with 4;
 
-Value test value
-    do true;
-
-\\disambig"
-                
-);
+");
             
             Console.ReadKey();
         }

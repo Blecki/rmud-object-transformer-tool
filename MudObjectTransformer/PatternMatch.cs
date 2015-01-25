@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace MudObjectTransformer
 {
-    public class MatchResult
+    public class PatternMatch
     {
         public Token NextToken;
         public bool Matched;
 
-        public static MatchResult NoMatch
+        public static PatternMatch NoMatch
         {
             get
             {
-                return new MatchResult { Matched = false };
+                return new PatternMatch { Matched = false };
             }
         }
 
-        public static MatchResult Create(Token NextToken)
+        public static PatternMatch Create(Token NextToken)
         {
-            return new MatchResult { NextToken = NextToken, Matched = true };
+            return new PatternMatch { NextToken = NextToken, Matched = true };
         }
     }
 }

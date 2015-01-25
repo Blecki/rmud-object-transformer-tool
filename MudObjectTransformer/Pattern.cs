@@ -6,22 +6,11 @@ using System.Threading.Tasks;
 
 namespace MudObjectTransformer
 {
-    public class Pattern
+    public partial class Pattern
     {
-        public virtual MatchResult Match(Token Start)
+        public virtual PatternMatch Match(Token Start)
         {
             throw new NotImplementedException();
-        }
-
-        public static Matcher MSequence(params Matcher[] SubMatchers) { return new SequenceMatcher(SubMatchers); }
-        public static Matcher MToken(String ExactString) { return new TokenMatcher(ExactString); }
-        public static Matcher MWhitespace() { return new WhitespaceMatcher(); }
-        public static Matcher MSemicolon() { return new TokenMatcher(";"); }
-
-        public static bool Matches(Matcher Matcher, Token Start)
-        {
-            var matchResult = Matcher.Matches(Start);
-            return matchResult.Matched;
         }
 
         public static Token Advance(Token Start, int Count)
